@@ -1,11 +1,7 @@
 .navbar-link:not(.is-arrowless) {
     padding-right: 100px;
 }
-<<<<<<< HEAD
 h1 {
-=======
-h1, h2, h3, h4, h5, h6 {
->>>>>>> 35d32858c4b0999fe9d21d8f00f9e7a1bbce7e60
     font-size: 25px;
     font-weight: bold;
     color: blue;
