@@ -1,73 +1,124 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-        <link rel ="stylesheet" href="style.css">
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous">
-        </script>
-    </head>
-    <body>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="https://bulma.io">
-                <h1>Spring Breakers</h1>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link href="~bulma-carousel/dist/css/bulma-carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <h1>Spring Breakers</h1>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Events
+          </a>
+
+          <a class="navbar-item">
+            Hotels
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
             </a>
-          
-              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item">
+                Report an issue
               </a>
             </div>
-          
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-                <a class="navbar-item">
-                  Events
-                </a>
-          
-                <a class="navbar-item">
-                  Hotels
-                </a>
-          
-                
-              </div>
-          
-              <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                      More
-                    </a>
-            
-                    <div class="navbar-dropdown">
-                      <a class="navbar-item">
-                        About
-                      </a>
-                      <a class="navbar-item">
-                        Jobs
-                      </a>
-                      <a class="navbar-item">
-                        Contact
-                      </a>
-                      <hr class="navbar-divider">
-                      <a class="navbar-item">
-                        Report an issue
-                      </a>
-                    </div>
-                  </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns">
+      <div class="column">
+        <img src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1554924869/shape/mentalfloss/29007-istock-642987348_0.jpg?itok=MsXshrAK" />
+      </div>
+      <div class="column">
+        <form class="is-tile box is-vertical-center">
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-info query-param"
+                type="text"
+                placeholder="Destination"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-info query-param"
+                type="text"
+                placeholder="Max Price"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <div class="select is-info">
+                <select>
+                  <option>Event Type</option>
+                  <option>Concert</option>
+                  <option>Festival</option>
+                  <option>Other</option>
+                </select>
               </div>
             </div>
-          </nav>
-        
-        <script src="script.js" ></script>
-    </body>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <input
+                class="input is-info"
+                type="text"
+                placeholder="Start Date"
+              />
+            </div>
+            <div class="control">
+              <input class="input is-info" type="text" placeholder="End Date" />
+            </div>
+          </div>
+          <div class="control">
+            <button class="button is-link">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="~bulma-carousel/dist/js/bulma-carousel.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
