@@ -43,14 +43,14 @@ $(document).ready(function(){
         console.log("flights response:");
         console.log(response);
     })
-    // $.ajax({
-    //     url: "https://www.eventbrite.com/oauth/authorize?response_type=code&client_id=YOUR_API_KEY&redirect_uri=YOUR_REDIRECT_URI",
-    //     method: "GET"
-    // Just noticed that we are going to have to split up eventbrite url, if you look at it, it says it needs your api key and then the redirect uri.
+    $.ajax({
+        url: "https://www.eventbrite.com/oauth/authorize?response_type=code&client_id=YOUR_API_KEY&redirect_uri=YOUR_REDIRECT_URI",
+        method: "GET"
+    Just noticed that we are going to have to split up eventbrite url, if you look at it, it says it needs your api key and then the redirect uri.
 
-    // }).then(function(response){
-    //     console.log(response)
-    // })
+    }).then(function(response){
+        console.log(response)
+    })
 }
     testAPI();
 
