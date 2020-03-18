@@ -1,0 +1,16 @@
+.navbar-link:not(.is-arrowless) {
+    padding-right: 100px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+    background-color: aquamarine;
+}
+.navbar-item {    color: blue;
+    background-color: aquamarine;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    /* text-shadow: 0 0 black; */
+}
