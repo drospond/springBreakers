@@ -46,6 +46,7 @@ $(document).ready(function(){
     // $.ajax({
     //     url: "https://www.eventbrite.com/oauth/authorize?response_type=code&client_id=YOUR_API_KEY&redirect_uri=YOUR_REDIRECT_URI",
     //     method: "GET"
+    // Just noticed that we are going to have to split up eventbrite url, if you look at it, it says it needs your api key and then the redirect uri.
 
     // }).then(function(response){
     //     console.log(response)
