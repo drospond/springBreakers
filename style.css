@@ -3,9 +3,21 @@
     padding-right: 100px;
 }
 
+#a{
+    font-size: 50px;
+    font-weight: bold;
+    color: blue;
+    background-color: aquamarine;
+    text-align: center;
+}
+
 .navbar{
     background-color: orange;
     margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    color: blue;
+    
 }
 
 .navbar-brand{
@@ -19,6 +31,7 @@
     display: block;
     flex-grow: 0;
     flex-shrink: 0;
+    font-size: 50px;
     /* text-shadow: 0 0 black; */
 }
 
@@ -34,10 +47,24 @@
     margin-right: 5%;
 }
 
-.columns{
+.home-img{
     margin-left: 5%;
+    border-radius: 5px;
+    width: 90%;
+    box-shadow: 3px 3px 2px grey;
+}
+  
+.container {
+    background-color: gray;
+    height: 500px;
+    padding: 12px;
 }
   
 #logo{
     height: 6rem;
+}
+
+.column {
+    background-color: pink;
+    text-align: center;
 }
