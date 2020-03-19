@@ -3,16 +3,8 @@
     padding-right: 100px;
 }
 
-h1{
-    font-size: 50px;
-    font-weight: bold;
-    color: blue;
-    background-color: aquamarine;
-    text-align: center;
-}
-
 .navbar{
-    background-color: aquamarine;
+    background-color: orange;
     margin-bottom: 10px;
 }
 
@@ -23,7 +15,7 @@ h1{
 
 .navbar-item {    
     color: blue;
-    background-color: aquamarine;
+    background-color: orange;
     display: block;
     flex-grow: 0;
     flex-shrink: 0;
@@ -46,3 +38,6 @@ h1{
     margin-left: 5%;
 }
   
+#logo{
+    height: 6rem;
+}
