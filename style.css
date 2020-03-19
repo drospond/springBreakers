@@ -11,6 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar{
     background-color: aquamarine;
+    margin-bottom: 10px;
 }
 
 .navbar-item {    
@@ -23,7 +24,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .query-param{
-    max-width: 200px;
+    width: 20rem;
 }
 
+.date-param{
+    width: 9.6rem;
+}
+
+.param-tile{
+    margin-right: 10%;
+}
   
