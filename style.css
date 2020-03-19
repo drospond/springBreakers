@@ -3,7 +3,7 @@
     padding-right: 100px;
 }
 
-h1{
+#a{
     font-size: 50px;
     font-weight: bold;
     color: blue;
@@ -14,6 +14,10 @@ h1{
 .navbar{
     background-color: aquamarine;
     margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    color: blue;
+    
 }
 
 .navbar-brand{
@@ -27,6 +31,7 @@ h1{
     display: block;
     flex-grow: 0;
     flex-shrink: 0;
+    font-size: 50px;
     /* text-shadow: 0 0 black; */
 }
 
@@ -42,7 +47,17 @@ h1{
     margin-right: 5%;
 }
 
-.columns{
+/* .columns{
     margin-left: 5%;
-}
+} */
   
+.container {
+    background-color: gray;
+    height: 500px;
+    padding: 12px;
+}
+
+.column {
+    background-color: pink;
+    text-align: center;
+}
