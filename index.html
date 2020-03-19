@@ -12,6 +12,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -33,12 +39,24 @@
       </div>
       <div class="column is-full-mobile">
         <form class="is-tile box param-tile">
+          <h3>Easiest way to keep your fun time on budget</h3>
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-info query-param"
+                type="text"
+                placeholder="Your City"
+                id="your-city"
+              />
+            </div>
+          </div>
           <div class="field">
             <div class="control">
               <input
                 class="input is-info query-param"
                 type="text"
                 placeholder="Destination"
+                id="destination"
               />
             </div>
           </div>
@@ -48,6 +66,7 @@
                 class="input is-info query-param"
                 type="text"
                 placeholder="Max Price"
+                id="max-price"
               />
             </div>
           </div>
@@ -60,10 +79,11 @@
                 class="input is-info date-param"
                 type="date"
                 placeholder="Start Date"
+                id="start-date"
               />
             </div>
             <div class="control">
-              <input class="input is-info date-param" type="date" placeholder="End Date" />
+              <input class="input is-info date-param" type="date" placeholder="End Date" id="end-date"/>
             </div>
           </div>
           <div class="control">
