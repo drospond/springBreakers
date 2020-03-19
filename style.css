@@ -36,6 +36,12 @@ h1, h2, h3, h4, h5, h6 {
 }
   
 .container {
-    background-color: blue;
-    height: 150px;
+    background-color: gray;
+    height: 300px;
+    padding: 12px;
+}
+
+.column {
+    background-color: pink;
+    text-align: center;
 }
