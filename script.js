@@ -4,7 +4,7 @@ $(document).ready(function() {
     var apiKeyHotels = "3c2c5f64b8msh8750e09015167e8p191250jsn71fd26617126";
     var tokenFlights = "fe9a566d2984e0bfc2f4a6330188eaac";
     var apiKeyFlights = "3c2c5f64b8msh8750e09015167e8p191250jsn71fd26617126";
-    var zomatoKey = "9f4de5189fa76ba5e2e854c84b47b2e3"
+    var zomatoKey = "9f4de5189fa76ba5e2e854c84b47b2e3";
     
   
     var settings = {
@@ -34,9 +34,12 @@ $(document).ready(function() {
         "x-access-token": tokenFlights
       }
     };
-    var zomatoURL = "https://developers.zomato.com/api/v2.1/locations?query="
+    var zomatoURL = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entity_id + "&entity_type=city&sort=rating"
     var settingsZomato = {
-      
+      async = true,
+      crossDomain = true,
+      url: zomatoURL,
+      method: "GET"
   
     }
   
@@ -49,6 +52,11 @@ $(document).ready(function() {
   
       $.ajax(settings2).then(function(response) {
         console.log("flights response:");
+        console.log(response);
+      });
+
+      $.ajax(settingsZomato).then(function(response) {
+        console.log("Zomato response:");
         console.log(response);
       });
     }
