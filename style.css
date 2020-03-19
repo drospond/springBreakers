@@ -1,4 +1,9 @@
-
+h3{
+    line-height: 1.5rem;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
 .navbar-link:not(.is-arrowless) {
     padding-right: 100px;
 }
@@ -66,5 +71,4 @@
 
 .column {
     background-color: pink;
-    text-align: center;
 }
