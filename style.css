@@ -1,6 +1,3 @@
-body{
-    background-image: linear-gradient(red, yellow);
-}
 
 .navbar-link:not(.is-arrowless) {
     padding-right: 100px;
