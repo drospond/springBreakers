@@ -15,6 +15,7 @@ $(document).ready(function() {
     // var maxBudgetInput = $("#max-price");
 
     //hardcoded parameters
+    //delete once search function is finished
     var departDate = "2020-04-24";
     var returnDate = $("#end-date");
     var destinationInput = "293919";
@@ -122,18 +123,57 @@ $(document).ready(function() {
     testAPI();
     
     function search(event){
-      event.preventDefault;
-      console.log($("#start-date").val());
-      console.log($("#end-date").val());
-      console.log($("#destination").val());
-      console.log($("#max-price").val());
-      console.log($("#your-city").val());
+      event.preventDefault();
+      var departDate = $("#start-date").val();
+      var returnDate = $("#end-date");
+      var destinationInput = $("#destination").val();
+      var maxBudgetInput = $("#max-price").val();
+      var startLocationInput = $("#your-city").val();
     }
-    // var departDate = $("#start-date");
-    // var returnDate = $("#end-date");
-    // var destinationInput = $("#destination");
-    // var maxBudgetInput = $("#max-price");
 
-    $("#search").on("click", search)
+    $("#search").on("click", search);
+
+    //Data properties to pull from responses:
+    //Zomato location ID: .location_suggestions[0].entity_id
+    //TripAdvisor location ID: .data[0].result_object.location_id
+    //TripAdvisor hotel:
+      //Hotel Name: .data[i].name
+      //Photo src: .data[i].photo.images.medium.url
+      //Rating: .data[i].rating
+      //Price Level format($$$): .data[i].price_level
+      //Price: .data[i].price
+      
+    function getLocationID(settingsTripAdvGetLocation_ID) {
+      var destinationID = " "
+      $.ajax(settingsTripAdvGetLocation_ID).then(function (response) {
+        // console.log("GET Location_ID: ");
+        // console.log(response);
+        destinationID = "data[0].result_object.location_id";
+        
+      });
+      
+      console.log("Destination ID: ");
+      console.log(destinationID);
+
+
+
+    }
+    
+
+    getLocationID()
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
   });
   
