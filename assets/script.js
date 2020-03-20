@@ -14,6 +14,7 @@ $(document).ready(function() {
     // var destinationInput = $("#destination");
     // var maxBudgetInput = $("#max-price");
 
+    //hardcoded parameters
     var departDate = "2020-04-24";
     var returnDate = $("#end-date");
     var destinationInput = "293919";
@@ -76,12 +77,20 @@ $(document).ready(function() {
         xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
       },
       method: "GET",
-      // header:  zomatoKey,
-      //  curl -X GET --header "Accept: application/json" --header "user-key: 9f4de5189fa76ba5e2e854c84b47b2e3" "https://developers.zomato.com/api/v2.1/locations?query=Boston&count=20"
     }
-    // curl -X GET --header "Accept: application/json" --header "user-key: 9f4de5189fa76ba5e2e854c84b47b2e3" "https://developers.zomato.com/api/v2.1/locations?query=Boston&count=20"
+    
+    var zomatoURL2 = "https://developers.zomato.com/api/v2.1/location_details?entity_id=36932&entity_type=group"
+    var settingsZomatoGETLocations = {
+      async: true,
+      crossDomain: true,
+      // url: "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInputZom + "&count=20",
+      url: zomatoURL,
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
+      },
+      method: "GET",
+    }
 
-  
     function testAPI() {
       $.ajax(settingsTripAdvFlightAirportSearch).then(function (response) {
         console.log("Airport Search: ");
