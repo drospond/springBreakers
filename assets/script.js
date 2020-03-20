@@ -122,7 +122,7 @@ $(document).ready(function() {
     testAPI();
     
     function search(event){
-      event.preventDefault;
+      event.preventDefault();
       console.log($("#start-date").val());
       console.log($("#end-date").val());
       console.log($("#destination").val());
