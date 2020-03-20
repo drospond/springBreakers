@@ -80,11 +80,11 @@ $(document).ready(function() {
     }
     
     var zomatoURL2 = "https://developers.zomato.com/api/v2.1/location_details?entity_id=36932&entity_type=group"
-    var settingsZomatoGETLocations = {
+    var settingsZomatoLocationDetails = {
       async: true,
       crossDomain: true,
       // url: "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInputZom + "&count=20",
-      url: zomatoURL,
+      url: zomatoURL2,
       beforeSend: function(xhr) {
         xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
       },
@@ -113,7 +113,27 @@ $(document).ready(function() {
         console.log("tripadisor hotel: ");
         console.log(response);
       });
+      $.ajax(settingsZomatoLocationDetails).then(function (response) {
+        console.log("Location Details: ");
+        console.log(response);
+      });
+      
     }
     testAPI();
+    
+    function search(event){
+      event.preventDefault;
+      console.log($("#start-date").val());
+      console.log($("#end-date").val());
+      console.log($("#destination").val());
+      console.log($("#max-price").val());
+      console.log($("#your-city").val());
+    }
+    // var departDate = $("#start-date");
+    // var returnDate = $("#end-date");
+    // var destinationInput = $("#destination");
+    // var maxBudgetInput = $("#max-price");
+
+    $("#search").on("click", search)
   });
   
