@@ -136,23 +136,33 @@ $(document).ready(function() {
     //Data properties to pull from responses:
     //Zomato location ID: .location_suggestions[0].entity_id
     //TripAdvisor location ID: .data[0].result_object.location_id
-    //TripAdvisor hotel: .data[i] for each hotel
+    //TripAdvisor hotel:
       //Hotel Name: .data[i].name
-      //Photo: .data[]
+      //Photo src: .data[i].photo.images.medium.url
+      //Rating: .data[i].rating
+      //Price Level format($$$): .data[i].price_level
+      //Price: .data[i].price
       
     function getLocationID(settingsTripAdvGetLocation_ID) {
-      var destinationID = $(".data[0].result_object.location_id"),
+      var destinationID = " "
+      $.ajax(settingsTripAdvGetLocation_ID).then(function (response) {
+        // console.log("GET Location_ID: ");
+        // console.log(response);
+        destinationID = "data[0].result_object.location_id";
+        
+      });
       
-      
-      
-
+      console.log("Destination ID: ");
+      console.log(destinationID);
 
 
 
     }
     
 
-
+    getLocationID()
+    
+    
 
 
 
