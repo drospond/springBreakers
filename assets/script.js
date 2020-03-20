@@ -15,6 +15,7 @@ $(document).ready(function() {
     // var maxBudgetInput = $("#max-price");
 
     //hardcoded parameters
+    //delete once search function is finished
     var departDate = "2020-04-24";
     var returnDate = $("#end-date");
     var destinationInput = "293919";
@@ -123,17 +124,46 @@ $(document).ready(function() {
     
     function search(event){
       event.preventDefault();
-      console.log($("#start-date").val());
-      console.log($("#end-date").val());
-      console.log($("#destination").val());
-      console.log($("#max-price").val());
-      console.log($("#your-city").val());
+      var departDate = $("#start-date").val();
+      var returnDate = $("#end-date");
+      var destinationInput = $("#destination").val();
+      var maxBudgetInput = $("#max-price").val();
+      var startLocationInput = $("#your-city").val();
     }
-    // var departDate = $("#start-date");
-    // var returnDate = $("#end-date");
-    // var destinationInput = $("#destination");
-    // var maxBudgetInput = $("#max-price");
 
-    $("#search").on("click", search)
+    $("#search").on("click", search);
+
+    //Data properties to pull from responses:
+    //Zomato location ID: .location_suggestions[0].entity_id
+    //TripAdvisor location ID: .data[0].result_object.location_id
+    //TripAdvisor hotel: .data[i] for each hotel
+      //Hotel Name: .data[i].name
+      //Photo: .data[]
+      
+    function getLocationID(settingsTripAdvGetLocation_ID) {
+      var destinationID = $(".data[0].result_object.location_id"),
+      
+      
+      
+
+
+
+
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
   
