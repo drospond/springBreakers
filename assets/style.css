@@ -1,0 +1,73 @@
+h3 {
+  line-height: 1.5rem;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.navbar-link:not(.is-arrowless) {
+  padding-right: 100px;
+}
+
+#a {
+  font-size: 50px;
+  font-weight: bold;
+  color: blue;
+  background-color: aquamarine;
+  text-align: center;
+}
+
+.navbar {
+  background-color: rgb(243, 149, 42);
+  margin-bottom: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  color: blue;
+}
+
+.navbar-brand {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-item {
+  color: blue;
+  background-color: orange;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 50px;
+  /* text-shadow: 0 0 black; */
+}
+
+.query-param {
+  width: 20rem;
+}
+
+.date-param {
+  width: 9.6rem;
+}
+
+.param-tile {
+  margin-right: 5%;
+}
+
+.home-img {
+  margin-left: 5%;
+  border-radius: 5px;
+  width: 90%;
+  box-shadow: 3px 3px 2px grey;
+}
+
+.container {
+  background-color: gray;
+  height: 500px;
+  padding: 12px;
+}
+
+#logo {
+  height: 6rem;
+}
+
+.column {
+  background-color: rgb(192, 237, 255);
+}

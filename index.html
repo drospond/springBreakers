@@ -6,8 +6,8 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-    
+    <link rel="stylesheet" href="assets/reset.css" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
@@ -18,7 +18,7 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/style.css" />
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -26,16 +26,18 @@
     ></script>
   </head>
   <body>
-
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <img src="./pjlg.png" id="logo">
+        <img src="assets/images/pjlg.png" id="logo" />
       </div>
     </nav>
 
     <div class="columns">
       <div class="column">
-        <img class="home-img" src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1554924869/shape/mentalfloss/29007-istock-642987348_0.jpg?itok=MsXshrAK" />
+        <img
+          class="home-img"
+          src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1554924869/shape/mentalfloss/29007-istock-642987348_0.jpg?itok=MsXshrAK"
+        />
       </div>
       <div class="column is-full-mobile">
         <form class="is-tile box param-tile">
@@ -56,10 +58,7 @@
                 class="input is-info query-param"
                 type="text"
                 placeholder="Destination"
-
-
                 id="destination"
-
               />
             </div>
           </div>
@@ -74,8 +73,7 @@
             </div>
           </div>
 
-          <div class="field">
-          </div>
+          <div class="field"></div>
           <div class="field is-grouped">
             <div class="control">
               <input
@@ -86,24 +84,28 @@
               />
             </div>
             <div class="control">
-              <input class="input is-info date-param" type="date" placeholder="End Date" id="end-date"/>
+              <input
+                class="input is-info date-param"
+                type="date"
+                placeholder="End Date"
+                id="end-date"
+              />
             </div>
           </div>
           <div class="control">
-            <button class="button is-link">Search</button>
+            <button class="button is-link" id="search">Search</button>
           </div>
         </form>
       </div>
     </div>
  
 
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          SpringBreakers brought to you by yours truly: 
-          <a href= " ">Devin Carr</a>, 
-          <a href= " ">Landry Norman</a>,
+          SpringBreakers brought to you by yours truly:
+          <a href=" ">Devin Carr</a>, <a href=" ">Landry Norman</a>,
           <a href="https://drospond.github.io/Portfolio/"> David Rospond</a>,
           <a href=" "> Kieran Snook</a>
         </p>
