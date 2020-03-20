@@ -17,7 +17,7 @@ h3{
 }
 
 .navbar{
-    background-color: orange;
+    background-color: rgb(243, 149, 42);
     margin-bottom: 10px;
     font-size: 50px;
     font-weight: bold;
@@ -70,5 +70,5 @@ h3{
 }
 
 .column {
-    background-color: pink;
+    background-color: rgb(192, 237, 255);
 }
