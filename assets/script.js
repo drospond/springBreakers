@@ -14,10 +14,13 @@ $(document).ready(function() {
     // var destinationInput = $("#destination");
     // var maxBudgetInput = $("#max-price");
 
-    var departDate = $("#start-date");
+    var departDate = "2020-04-24";
     var returnDate = $("#end-date");
-    var destinationInput = $("#destination");
-    var maxBudgetInput = $("#max-price");
+    var destinationInput = "293919";
+    var destinationInputZom = "Atlanta";
+    var maxBudgetInput = "500";
+
+    // Need destination ID
 
 
     var settingsTripAdvGetLocation_ID = {
@@ -63,34 +66,42 @@ $(document).ready(function() {
         "x-rapidapi-key": tripAdvAPIKey
       }
     }
+    var zomatoURL = "https://developers.zomato.com/api/v2.1/locations?query=Boston&count=20"
     var settingsZomatoGETLocations = {
       async: true,
       crossDomain: true,
-      url: "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInput + "&count=20",
+      // url: "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInputZom + "&count=20",
+      url: zomatoURL,
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
+      },
       method: "GET",
-      header: {"user-key": zomatoKey}
+      // header:  zomatoKey,
+      //  curl -X GET --header "Accept: application/json" --header "user-key: 9f4de5189fa76ba5e2e854c84b47b2e3" "https://developers.zomato.com/api/v2.1/locations?query=Boston&count=20"
     }
-    
+    // curl -X GET --header "Accept: application/json" --header "user-key: 9f4de5189fa76ba5e2e854c84b47b2e3" "https://developers.zomato.com/api/v2.1/locations?query=Boston&count=20"
+
   
     function testAPI() {
       $.ajax(settingsTripAdvFlightAirportSearch).then(function (response) {
-        console.log("Airport Search: ")
+        console.log("Airport Search: ");
         console.log(response);
       });
       $.ajax(settingsTripAdvFlightCreateSession).then(function (response) {
-        console.log("Create Session: ")
+        console.log("Create Session: ");
         console.log(response);
       });
       $.ajax(settingsTripAdvGetLocation_ID).then(function (response) {
-        console.log("GET Location_ID: ")
+        console.log("GET Location_ID: ");
         console.log(response);
       });
 
-      // $.ajax(settingsZomato).then(function(response) {
-      //   console.log("Zomato response:");
-      //   console.log(response);
-      // });
+      $.ajax(settingsZomatoGETLocations).then(function(response) {
+        console.log("Zomato response:");
+        console.log(response);
+      });
       $.ajax(settingsTripAdvHotel).then(function (response) {
+        console.log("tripadisor hotel: ");
         console.log(response);
       });
     }
