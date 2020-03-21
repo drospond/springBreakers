@@ -18,34 +18,11 @@ $(document).ready(function() {
     //delete once search function is finished
     var departDate = "2020-04-24";
     var returnDate = $("#end-date");
-    var destinationInput = "293919";
+    var destinationInput = "Boston";
     var destinationInputZom = "Atlanta";
     var maxBudgetInput = "500";
 
-    // Need destination ID
 
-
-    var settingsTripAdvGetLocation_ID = {
-      async: true,
-      crossDomain: true,
-      url: "https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=km&query=" + destinationInput,
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": tripAdvAPIKey
-      }
-    }
-
-    var settingsTripAdvHotel = {
-      async: true,
-      crossDomain: true,
-      url: "https://tripadvisor1.p.rapidapi.com/hotels/list?zff=4%252C6&offset=0&price-max=" + maxBudgetInput + "&subcategory=hotel&currency=USD&limit=30&checkin=" + departDate + "&order=asc&lang=en_US&sort=recommended&nights=1&location_id=" + destinationInput + "&adults=1&rooms=1",
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": tripAdvAPIKey
-      }
-    }
    
     var settingsTripAdvFlightAirportSearch = {
       async: true,
@@ -120,19 +97,8 @@ $(document).ready(function() {
       });
       
     }
-    testAPI();
-    
-    function search(event){
-      event.preventDefault();
-      var departDate = $("#start-date").val();
-      var returnDate = $("#end-date");
-      var destinationInput = $("#destination").val();
-      var maxBudgetInput = $("#max-price").val();
-      var startLocationInput = $("#your-city").val();
-    }
-
-    $("#search").on("click", search);
-
+    // testAPI();
+   
     //Data properties to pull from responses:
     //Zomato location ID: .location_suggestions[0].entity_id
     //TripAdvisor location ID: .data[0].result_object.location_id
@@ -143,36 +109,52 @@ $(document).ready(function() {
       //Price Level format($$$): .data[i].price_level
       //Price: .data[i].price
       
-    function getLocationID(settingsTripAdvGetLocation_ID) {
-      var destinationID = " "
+    //Takes in destinationInput and passes the destination ID to a callback function which will be the getHotel info.  
+    function getLocationIDTripAdvisor(destinationInput, callback) {
+      console.log(destinationInput);
+      var settingsTripAdvGetLocation_ID = {
+        async: true,
+        crossDomain: true,
+        url: "https://tripadvisor1.p.rapidapi.com/locations/auto-complete?lang=en_US&units=km&query=" + destinationInput,
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+          "x-rapidapi-key": tripAdvAPIKey
+        }
+      }
       $.ajax(settingsTripAdvGetLocation_ID).then(function (response) {
-        // console.log("GET Location_ID: ");
-        // console.log(response);
-        destinationID = "data[0].result_object.location_id";
-        
+        callback(maxBudgetInput, departDate, response.data[0].result_object.location_id);
       });
-      
-      console.log("Destination ID: ");
-      console.log(destinationID);
-
-
-
     }
-    
 
-    getLocationID()
-    
-    
+    function getHotelInfo(maxBudgetInput, departDate, destinationID){
+      var settingsTripAdvHotel = {
+        async: true,
+        crossDomain: true,
+        url: "https://tripadvisor1.p.rapidapi.com/hotels/list?zff=4%252C6&offset=0&price-max=" + maxBudgetInput + "&subcategory=hotel&currency=USD&limit=30&checkin=" + departDate + "&order=asc&lang=en_US&sort=recommended&nights=1&location_id=" + destinationID + "&adults=1&rooms=1",
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+          "x-rapidapi-key": tripAdvAPIKey
+        }
+      }
+      $.ajax(settingsTripAdvHotel).then(function (response) {
+        console.log("tripadisor hotel: ");
+        console.log(response);
+      });
+    }
 
+    function search(event){
+      event.preventDefault();
+      var departDate = $("#start-date").val();
+      var returnDate = $("#end-date");
+      var destinationInput = $("#destination").val();
+      var maxBudgetInput = $("#max-price").val();
+      var startLocationInput = $("#your-city").val();
+      getLocationIDTripAdvisor(destinationInput, getHotelInfo);
+    }
 
-
-
-
-
-
-
-
-
+    $("#search").on("click", search);
 
 
   });
