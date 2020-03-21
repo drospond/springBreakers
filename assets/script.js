@@ -16,58 +16,32 @@ $(document).ready(function() {
 
     //hardcoded parameters
     //delete once search function is finished
-    var departDate = "2020-04-24";
     var returnDate = $("#end-date");
-    var destinationInput = "Boston";
     var destinationInputZom = "Atlanta";
-    var maxBudgetInput = "500";
 
 
    
-    var settingsTripAdvFlightAirportSearch = {
-      async: true,
-      crossDomain: true,
-      url: "https://tripadvisor1.p.rapidapi.com/airports/search?locale=en_US&query=" + destinationInput,
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": tripAdvAPIKey
-      }
-    }
+    // var settingsTripAdvFlightAirportSearch = {
+    //   async: true,
+    //   crossDomain: true,
+    //   url: "https://tripadvisor1.p.rapidapi.com/airports/search?locale=en_US&query=" + destinationInput,
+    //   method: "GET",
+    //   headers: {
+    //     "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+    //     "x-rapidapi-key": tripAdvAPIKey
+    //   }
+    // }
 
-    var settingsTripAdvFlightCreateSession = {
-      async: true,
-      crossDomain: true,
-      url: "https://tripadvisor1.p.rapidapi.com/flights/create-session?currency=USD&ta=1&tc=11%252C5&c=0&d1=CNX&o1=DMK&dd1=" + departDate,
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-        "x-rapidapi-key": tripAdvAPIKey
-      }
-    }
-    var zomatoURL = "https://developers.zomato.com/api/v2.1/locations?query=Boston&count=20"
-    var settingsZomatoGETLocations = {
-      async: true,
-      crossDomain: true,
-      // url: "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInputZom + "&count=20",
-      url: zomatoURL,
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
-      },
-      method: "GET",
-    }
-    
-    var zomatoURL2 = "https://developers.zomato.com/api/v2.1/location_details?entity_id=36932&entity_type=group"
-    var settingsZomatoLocationDetails = {
-      async: true,
-      crossDomain: true,
-      // url: "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInputZom + "&count=20",
-      url: zomatoURL2,
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
-      },
-      method: "GET",
-    }
+    // var settingsTripAdvFlightCreateSession = {
+    //   async: true,
+    //   crossDomain: true,
+    //   url: "https://tripadvisor1.p.rapidapi.com/flights/create-session?currency=USD&ta=1&tc=11%252C5&c=0&d1=CNX&o1=DMK&dd1=" + departDate,
+    //   method: "GET",
+    //   headers: {
+    //     "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
+    //     "x-rapidapi-key": tripAdvAPIKey
+    //   }
+    // }
 
     function testAPI() {
       $.ajax(settingsTripAdvFlightAirportSearch).then(function (response) {
@@ -110,7 +84,7 @@ $(document).ready(function() {
       //Price: .data[i].price
       
     //Takes in destinationInput and passes the destination ID to a callback function which will be the getHotel info.  
-    function getLocationIDTripAdvisor(destinationInput, callback) {
+    function getLocationIDTripAdvisor(destinationInput, maxBudgetInput, departDate, callback) {
       console.log(destinationInput);
       var settingsTripAdvGetLocation_ID = {
         async: true,
@@ -127,11 +101,15 @@ $(document).ready(function() {
       });
     }
 
+    //Gets trip advisor hotel info. Pulls in parameters from getLocationIDTripAdvisor(). 
+    //Currently console logs the response and some sample info. 
+    //Price parameters are showing up in the url but don't change the response for some reason.
     function getHotelInfo(maxBudgetInput, departDate, destinationID){
+      var queryURL = "https://tripadvisor1.p.rapidapi.com/hotels/list?zff=4%252C6&offset=0&price-max=" + maxBudgetInput + "&subcategory=hotel&currency=USD&limit=30&checkin=" + departDate + "&order=asc&lang=en_US&sort=price&nights=1&location_id=" + destinationID + "&adults=1&rooms=1";
       var settingsTripAdvHotel = {
         async: true,
         crossDomain: true,
-        url: "https://tripadvisor1.p.rapidapi.com/hotels/list?zff=4%252C6&offset=0&price-max=" + maxBudgetInput + "&subcategory=hotel&currency=USD&limit=30&checkin=" + departDate + "&order=asc&lang=en_US&sort=recommended&nights=1&location_id=" + destinationID + "&adults=1&rooms=1",
+        url: queryURL,
         method: "GET",
         headers: {
           "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
@@ -140,6 +118,50 @@ $(document).ready(function() {
       }
       $.ajax(settingsTripAdvHotel).then(function (response) {
         console.log("tripadisor hotel: ");
+        console.log(response);
+        console.log(maxBudgetInput);
+        console.log(departDate);
+        console.log(queryURL);
+        console.log("Hotel Name: " + response.data[0].name);
+        console.log("Photo src: " + response.data[0].photo.images.medium.url);
+        console.log("Rating: " + response.data[0].rating);
+        console.log("Price Level format($$$): " + response.data[0].price_level);
+        console.log("Price: " + response.data[0].price);
+      });
+    }
+
+    //Gets the zomato city ID and passes it to the call back function which is getRestaurantInfo()
+    function getLocationInfoZomato(destinationInput, callback){
+      var zomatoURL = "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInput + "&count=20"
+      var settingsZomatoGETLocations = {
+        async: true,
+        crossDomain: true,
+        url: zomatoURL,
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
+      },
+        method: "GET",
+      }
+      $.ajax(settingsZomatoGETLocations).then(function(response) {
+        callback(response.location_suggestions[0].entity_id);
+      });
+    }
+
+    //Gets city info. The response includes top restaurants. 
+    //Was thinking we can loop through that array and return anything with a price rating of 2 or lower to display in our results
+    function getRestaurantInfo(cityID){
+      var zomatoURL = "https://developers.zomato.com/api/v2.1/location_details?entity_id=" + cityID + "&entity_type=city"
+      var settingsZomatoLocationDetails = {
+        async: true,
+        crossDomain: true,
+        url: zomatoURL,
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3")
+        },
+        method: "GET",
+      }
+      $.ajax(settingsZomatoLocationDetails).then(function (response) {
+        console.log("Zomato Location Details: ");
         console.log(response);
       });
     }
@@ -151,7 +173,8 @@ $(document).ready(function() {
       var destinationInput = $("#destination").val();
       var maxBudgetInput = $("#max-price").val();
       var startLocationInput = $("#your-city").val();
-      getLocationIDTripAdvisor(destinationInput, getHotelInfo);
+      getLocationIDTripAdvisor(destinationInput, maxBudgetInput, departDate, getHotelInfo);
+      getLocationInfoZomato(destinationInput, getRestaurantInfo);
     }
 
     $("#search").on("click", search);
