@@ -76,22 +76,47 @@ $(document).ready(function() {
         console.log("Price: " + response.data[0].price);
         console.log("link: " + response.data[0].hac_offers.offers[0].link)
         
-        var pEl = $("<p>");
-        pEl.text(response.data[0].name);
-        $("#Hotels_1").append(pEl);
 
-        var pEl1 = $("<p>");
-        pEl1.text(response.data[0].rating);
-        $("#Hotels_1").append(pEl1);
+        for(var i = 0; i < 5; i++){
+          if(response.data[i].rating < 5){
+            $("#Hotels_" +(i+1)).find(".title").text(response.data[i].name);
+            $("#Hotels_" +(i+1)).find(".hotel-url").attr("href", response.data[i].hac_offers.offers.link);
+            $("#Hotels_" +(i+1)).find(".hotel-price").text("Hotel price: " + response.data[i].price);
+            $("#Hotels_" +(i+1)).find(".hotel-rating").text("Hotel rating: " + response.data[i].rating);
+            
+            $("#Hotels_" +(i+1)).find("img").attr("src", response.data[i].photo.images.medium.url);
+          }
+        }
+      })
+    }
 
-        $("#Hotels_1").find("img").attr("src", response.data[0].photo.images.medium.url);
+//   for(var i = 0; i < 5; i++){
+//           if(response.data[i].rating < 5){
+//             $("#Hotels_" +(i+1)).find(".title").text(response.data[i].name);
+//             $("#Hotels_" +(i+1)).find(".hotel-url").attr("href", response.data[i].hac_offers.offers.link);
+//             $("#Hotels_" +(i+1)).find(".hotel-price").text("Hotel price: " + response.data[i].price);
+//             $("#Hotels_" +(i+1)).find(".hotel-rating").text("Hotel rating: " + response.data[i].rating);
+            
+//             $("#Hotels_" +(i+1)).find("img").attr("src", response.data[i].photo.images.medium.url);
+//           }
+//         }
+//       })
+//     }
+       
 
 
-        var pEl2 = $("<p>");
-        pEl2.text(response.data[0].price);
-        $("#Hotels_1").append(pEl2);
+        // var pEl1 = $("<p>");
+        // pEl1.text(response.data[0].rating);
+        // $("#Hotels_1").append(pEl1);
+
+        // $("#Hotels_1").find("img").attr("src", response.data[0].photo.images.medium.url);
+
+
+        // var pEl2 = $("<p>");
+        // pEl2.text(response.data[0].price);
+        // $("#Hotels_1").append(pEl2);
         
-        $("#Hotels_1").find("a").attr("href", response.data[0].hac_offers.offers[0].link);
+        // $("#Hotels_1").find("a").attr("href", response.data[0].hac_offers.offers[0].link);
         // var pEl3 = $("<a>");
         // // pEl3.text(href=) : ("response.data[0].hac_offers.offers[0].link");
         // pEl3.attr("href=", response.data[0].hac_offers.offers[0].link)
@@ -101,8 +126,6 @@ $(document).ready(function() {
         // var pEl2 = $("<img>");
         // pEl2.append(response.data[0].photo.images.medium.url);
         // $("#image-1").photo(pEl2);
-      }).done(showResults())
-    }
 
     //Gets the zomato city ID and passes it to the call back function which is getRestaurantInfo()
     function getLocationInfoZomato(destinationInput, callback){
