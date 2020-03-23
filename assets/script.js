@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // console.log("hello world");
     
-    
+    // API keys
     var zomatoKey = "9f4de5189fa76ba5e2e854c84b47b2e3";
     var tripAdvAPIKey = "6d1747e19cmshe3ce0496d913f19p141f76jsn0977925b3e6b";
     
@@ -116,6 +116,7 @@ $(document).ready(function() {
           "x-rapidapi-key": tripAdvAPIKey
         }
       }
+    // testing to make sure all calls work
       $.ajax(settingsTripAdvHotel).then(function (response) {
         console.log("tripadisor hotel: ");
         console.log(response);
@@ -127,14 +128,46 @@ $(document).ready(function() {
         console.log("Rating: " + response.data[0].rating);
         console.log("Price Level format($$$): " + response.data[0].price_level);
         console.log("Price: " + response.data[0].price);
-      });
+        console.log("link: " + response.data[0].hac_offers.offers[0].link)
+        // JSON.stringify(response.data)
+        var pEl = $("<p>");
+        pEl.text(response.data[0].name);
+        $("#Hotels_1").append(pEl);
+
+        var pEl1 = $("<p>");
+        pEl1.text(response.data[0].rating);
+        $("#Hotels_1").append(pEl1);
+
+        $("#Hotels_1").find("img").attr("src", response.data[0].photo.images.medium.url);
+
+
+        var pEl2 = $("<p>");
+        pEl2.text(response.data[0].price);
+        $("#Hotels_1").append(pEl2);
+        
+        $("#Hotels_1").find("a").attr("href", response.data[0].hac_offers.offers[0].link);
+        // var pEl3 = $("<a>");
+        // // pEl3.text(href=) : ("response.data[0].hac_offers.offers[0].link");
+        // pEl3.attr("href=", response.data[0].hac_offers.offers[0].link)
+        // $("#Hotels_1").append(pEl3);
+
+
+        // var pEl2 = $("<img>");
+        // pEl2.append(response.data[0].photo.images.medium.url);
+        // $("#image-1").photo(pEl2);
+        
+
+      })
+      // .done(function(data){
+      //   $("#Hotels_1").append.
+      // })
     }
 
     //Gets the zomato city ID and passes it to the call back function which is getRestaurantInfo()
     function getLocationInfoZomato(destinationInput, callback){
       var zomatoURL = "https://developers.zomato.com/api/v2.1/locations?query=" + destinationInput + "&count=20"
       var settingsZomatoGETLocations = {
-        async: true,
+        async: true, 
         crossDomain: true,
         url: zomatoURL,
         beforeSend: function(xhr) {
@@ -144,7 +177,7 @@ $(document).ready(function() {
       }
       $.ajax(settingsZomatoGETLocations).then(function(response) {
         callback(response.location_suggestions[0].entity_id);
-      });
+      })
     }
 
     //Gets city info. The response includes top restaurants. 
@@ -163,8 +196,28 @@ $(document).ready(function() {
       $.ajax(settingsZomatoLocationDetails).then(function (response) {
         console.log("Zomato Location Details: ");
         console.log(response);
-      });
-    }
+        // $("#Food_1").append(JSON.stringify(response.data))
+        
+        // $("#Food_1").append(JSON.stringify(data))
+        //Restaurant array: response.best_rated_restaurant
+        //relevant info:
+          //response.best_rated_restaurant[i].restaurant.name
+          //response.best_rated_restaurant[i].restaurant.location.adress
+          //response.best_rated_restaurant[i].restaurant.price_range (1-4, 4 being most expensive)
+          //response.best_rated_restaurant[i].restaurant.menu_url
+          //response.best_rated_restaurant[i].restaurant.cuisines (Food type)
+          for(var i = 0; i < 5; i++){
+            if(response.best_rated_restaurant[i].restaurant.price_range < 5){
+              $("#Food_" +(i+1)).find(".title").text(response.best_rated_restaurant[i].restaurant.name);
+              $("#Food_" +(i+1)).find(".restaurant-url").attr("href", response.best_rated_restaurant[i].restaurant.url);
+              $("#Food_" +(i+1)).find(".cuisine-type").text("Cuisine type: " + response.best_rated_restaurant[i].restaurant.cuisines);
+              $("#Food_" +(i+1)).find(".address").text("Address: " + response.best_rated_restaurant[i].restaurant.location.address);
+              $("#Food_" +(i+1)).find(".menu").attr("href", response.best_rated_restaurant[i].restaurant.menu_url);
+              $("#Food_" +(i+1)).find("img").attr("src", response.best_rated_restaurant[i].restaurant.featured_image);
+            }
+          }
+        })
+      }
 
     function search(event){
       event.preventDefault();
@@ -175,10 +228,16 @@ $(document).ready(function() {
       var startLocationInput = $("#your-city").val();
       getLocationIDTripAdvisor(destinationInput, maxBudgetInput, departDate, getHotelInfo);
       getLocationInfoZomato(destinationInput, getRestaurantInfo);
+      // $("#Food_1").append(JSON.stringify(data))
+      
     }
+    
+    
+    $("#search").on("click", search)
+    
+    // $("#Food_1").append(JSON.stringify(data))
+    
 
-    $("#search").on("click", search);
-
-
+    
   });
   
