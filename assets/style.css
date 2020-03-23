@@ -71,3 +71,6 @@ h3 {
 .column {
   background-color: rgb(192, 237, 255);
 }
+#image-1 {
+  box-sizing: content-box;
+}
