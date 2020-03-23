@@ -80,13 +80,14 @@ $(document).ready(function() {
         for(var i = 0; i < 5; i++){
           if(response.data[i].rating < 5){
             $("#Hotels_" +(i+1)).find(".title").text(response.data[i].name);
-            $("#Hotels_" +(i+1)).find(".hotel-url").attr("href", response.data[i].hac_offers.offers.link);
+            $("#Hotels_" +(i+1)).find(".hotel-url").attr("href", response.data[i].hac_offers.offers[0].link);
             $("#Hotels_" +(i+1)).find(".hotel-price").text("Hotel price: " + response.data[i].price);
             $("#Hotels_" +(i+1)).find(".hotel-rating").text("Hotel rating: " + response.data[i].rating);
             
             $("#Hotels_" +(i+1)).find("img").attr("src", response.data[i].photo.images.medium.url);
           }
         }
+        showResults();
       })
     }
 

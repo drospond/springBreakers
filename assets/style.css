@@ -65,7 +65,7 @@ h4{
 
 .container {
   background-color: gray;
-  height: 500px;
+  height: auto;
   padding: 12px;
 }
 
@@ -87,4 +87,9 @@ h4{
   height: 25px;
   padding-top: 10px;
   padding-bottom: 30px;
+}
+
+.card{
+  width: 250px;
+  margin-left: 20%;
 }
