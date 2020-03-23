@@ -24,6 +24,10 @@ $(document).ready(function() {
     //     "x-rapidapi-key": tripAdvAPIKey
     //   }
     // }
+
+    function showResults(){
+      $("#results-container").removeAttr("hidden")
+    }
       
     //Takes in destinationInput and passes the destination ID to a callback function which will be the getHotel info.  
     function getLocationIDTripAdvisor(destinationInput, maxBudgetInput, departDate, callback) {
@@ -97,7 +101,7 @@ $(document).ready(function() {
         // var pEl2 = $("<img>");
         // pEl2.append(response.data[0].photo.images.medium.url);
         // $("#image-1").photo(pEl2);
-      })
+      }).done(showResults())
     }
 
     //Gets the zomato city ID and passes it to the call back function which is getRestaurantInfo()
