@@ -1,26 +1,9 @@
 $(document).ready(function() {
-    // console.log("hello world");
-    
     // API keys
     var zomatoKey = "9f4de5189fa76ba5e2e854c84b47b2e3";
     var tripAdvAPIKey = "6d1747e19cmshe3ce0496d913f19p141f76jsn0977925b3e6b";
-    
-    var hotelsURL = "https://hotels4.p.rapidapi.com/locations/search?locale=en_US&query=" + cityLocationHT;
-    var cityLocationHT = $("#locationD");
 
-    
-    // var departDate = $("#start-date");
-    // var returnDate = $("#end-date");
-    // var destinationInput = $("#destination");
-    // var maxBudgetInput = $("#max-price");
-
-    //hardcoded parameters
-    //delete once search function is finished
-    var returnDate = $("#end-date");
-    var destinationInputZom = "Atlanta";
-
-
-   
+    //API FOR FUTURE RELEASES:
     // var settingsTripAdvFlightAirportSearch = {
     //   async: true,
     //   crossDomain: true,
@@ -31,7 +14,6 @@ $(document).ready(function() {
     //     "x-rapidapi-key": tripAdvAPIKey
     //   }
     // }
-
     // var settingsTripAdvFlightCreateSession = {
     //   async: true,
     //   crossDomain: true,
@@ -42,46 +24,6 @@ $(document).ready(function() {
     //     "x-rapidapi-key": tripAdvAPIKey
     //   }
     // }
-
-    function testAPI() {
-      $.ajax(settingsTripAdvFlightAirportSearch).then(function (response) {
-        console.log("Airport Search: ");
-        console.log(response);
-      });
-      $.ajax(settingsTripAdvFlightCreateSession).then(function (response) {
-        console.log("Create Session: ");
-        console.log(response);
-      });
-      $.ajax(settingsTripAdvGetLocation_ID).then(function (response) {
-        console.log("GET Location_ID: ");
-        console.log(response);
-      });
-
-      $.ajax(settingsZomatoGETLocations).then(function(response) {
-        console.log("Zomato response:");
-        console.log(response);
-      });
-      $.ajax(settingsTripAdvHotel).then(function (response) {
-        console.log("tripadisor hotel: ");
-        console.log(response);
-      });
-      $.ajax(settingsZomatoLocationDetails).then(function (response) {
-        console.log("Location Details: ");
-        console.log(response);
-      });
-      
-    }
-    // testAPI();
-   
-    //Data properties to pull from responses:
-    //Zomato location ID: .location_suggestions[0].entity_id
-    //TripAdvisor location ID: .data[0].result_object.location_id
-    //TripAdvisor hotel:
-      //Hotel Name: .data[i].name
-      //Photo src: .data[i].photo.images.medium.url
-      //Rating: .data[i].rating
-      //Price Level format($$$): .data[i].price_level
-      //Price: .data[i].price
       
     //Takes in destinationInput and passes the destination ID to a callback function which will be the getHotel info.  
     function getLocationIDTripAdvisor(destinationInput, maxBudgetInput, departDate, callback) {
@@ -129,7 +71,7 @@ $(document).ready(function() {
         console.log("Price Level format($$$): " + response.data[0].price_level);
         console.log("Price: " + response.data[0].price);
         console.log("link: " + response.data[0].hac_offers.offers[0].link)
-        // JSON.stringify(response.data)
+        
         var pEl = $("<p>");
         pEl.text(response.data[0].name);
         $("#Hotels_1").append(pEl);
@@ -155,12 +97,7 @@ $(document).ready(function() {
         // var pEl2 = $("<img>");
         // pEl2.append(response.data[0].photo.images.medium.url);
         // $("#image-1").photo(pEl2);
-        
-
       })
-      // .done(function(data){
-      //   $("#Hotels_1").append.
-      // })
     }
 
     //Gets the zomato city ID and passes it to the call back function which is getRestaurantInfo()
@@ -196,17 +133,8 @@ $(document).ready(function() {
       $.ajax(settingsZomatoLocationDetails).then(function (response) {
         console.log("Zomato Location Details: ");
         console.log(response);
-        // $("#Food_1").append(JSON.stringify(response.data))
-        
-        // $("#Food_1").append(JSON.stringify(data))
-        //Restaurant array: response.best_rated_restaurant
-        //relevant info:
-          //response.best_rated_restaurant[i].restaurant.name
-          //response.best_rated_restaurant[i].restaurant.location.adress
-          //response.best_rated_restaurant[i].restaurant.price_range (1-4, 4 being most expensive)
-          //response.best_rated_restaurant[i].restaurant.menu_url
-          //response.best_rated_restaurant[i].restaurant.cuisines (Food type)
           for(var i = 0; i < 5; i++){
+            //Conditional set above possible range for time being
             if(response.best_rated_restaurant[i].restaurant.price_range < 5){
               $("#Food_" +(i+1)).find(".title").text(response.best_rated_restaurant[i].restaurant.name);
               $("#Food_" +(i+1)).find(".restaurant-url").attr("href", response.best_rated_restaurant[i].restaurant.url);
@@ -228,16 +156,10 @@ $(document).ready(function() {
       var startLocationInput = $("#your-city").val();
       getLocationIDTripAdvisor(destinationInput, maxBudgetInput, departDate, getHotelInfo);
       getLocationInfoZomato(destinationInput, getRestaurantInfo);
-      // $("#Food_1").append(JSON.stringify(data))
-      
     }
     
     
     $("#search").on("click", search)
-    
-    // $("#Food_1").append(JSON.stringify(data))
-    
-
     
   });
   
