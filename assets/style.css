@@ -12,19 +12,20 @@ h4 {
 }
 
 .navbar {
-  background-image: linear-gradient(to bottom, lightblue,lightblue, lightblue, yellow);
+  background-color: lightblue;
   font-size: 50px;
   font-weight: bold;
+  border-bottom: 5px solid gold;
 }
 
-.navbar-brand {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: "Marck Script", cursive;
-  z-index: 1000;
-}
+.navbar-brands {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-family: "Marck Script", cursive;
+    z-index: 1000;
+  }
 
-.brand{
+.brands{
   color: rgb(0, 0, 131);
 }
 
@@ -39,17 +40,29 @@ h4 {
 .home-img {
   width: 100%;
   position: absolute;
+  top: -5rem;
 }
 
 form{
   z-index: 10000;
+  height: 22rem;
   position: absolute;
-  top:10rem;
-  left: 10rem;
+  top: 10rem;
+  left: 5rem;
 }
 
+.form-area{
+  background-image: url("https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1554924869/shape/mentalfloss/29007-istock-642987348_0.jpg?itok=MsXshrAK");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 40rem;
+}
+
+
+
 .box{
-  background-color:rgba(255, 255, 255, 0.5);
+  background-color:rgba(255, 255, 255, 0.8);
 }
 
 .query-param {

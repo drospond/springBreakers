@@ -5,6 +5,12 @@ $(document).ready(function () {
 
   function showResults() {
     $("#results-container").removeAttr("hidden");
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: $("#results-container").offset().top,
+      },
+      500
+    );
   }
 
   //Takes in destinationInput and passes the destination ID to a callback function which will be the getHotel info.
@@ -158,7 +164,7 @@ $(document).ready(function () {
               response.best_rated_restaurant[i].restaurant.cuisines
           );
           const address = $("<p>").text(
-              response.best_rated_restaurant[i].restaurant.location.address
+            response.best_rated_restaurant[i].restaurant.location.address
           );
           const menuLink = $("<a>")
             .text("Menu")
@@ -189,6 +195,8 @@ $(document).ready(function () {
     var destinationInput = $("#destination").val();
     var maxBudgetInput = $("#max-price").val();
     var startLocationInput = $("#your-city").val();
+    $("#hotel-results").empty();
+    $("#restaurant-results").empty();
     getLocationIDTripAdvisor(
       destinationInput,
       maxBudgetInput,
@@ -200,4 +208,3 @@ $(document).ready(function () {
 
   $("#search").on("click", search);
 });
-
