@@ -59,8 +59,6 @@ form{
   min-height: 40rem;
 }
 
-
-
 .box{
   background-color:rgba(255, 255, 255, 0.8);
 }
@@ -83,6 +81,7 @@ form{
 }
 
 .footer {
+  background-color: lightgray;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -91,17 +90,36 @@ form{
   padding-bottom: 30px;
 }
 
-.card {
-  width: 250px;
-  margin-left: 20%;
+.column-title{
+  text-align: center;
+  font-size: 30px;
 }
 
-.half-circle {
+.card {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+}
+
+.animation-container{
+  width: 1400px;
+  height: 74px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  transform: translateX(-50%);
+  margin: 0 50%;
+}
+
+.sun {
   width: 100px;
-  height: 50px; /* as the half of the width */
+  height: 50px; 
   background-color: gold;
-  border-top-left-radius: 110px; /* 100px of height + 10px of border */
-  border-top-right-radius: 110px; /* 100px of height + 10px of border */
+  border-top-left-radius: 110px;
+  border-top-right-radius: 110px; 
   border: 1px solid gold;
   border-bottom: 0;
   position: absolute;
@@ -109,4 +127,65 @@ form{
   right: 0;
   margin: auto;
   bottom: 0;
+}
+
+.sun-beam {
+  position: absolute;
+  width: 100px;
+  height: 18px;
+  width: 6px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  background: gold;
+}
+
+.beam1{
+  left: 50%;
+  top: 50%;
+  animation: shine1 1s ease-out forwards;
+}
+.beam2{
+  left: 53%;
+  top: 25%;
+  transform: rotate(45deg);
+  animation: shine2 1s reverse ease-out forwards;
+}
+.beam3{
+  left: 47%;
+  top: 25%;
+  transform: rotate(-45deg);
+  animation: shine3 1s reverse ease-out forwards;
+}
+.beam4{
+  left: 45.5%;
+  top: 65%;
+  transform: rotate(-75deg);
+  animation: shine4 1s reverse ease-out forwards;
+}
+.beam5{
+  left: 54%;
+  top: 65%;
+  transform: rotate(75deg);
+  animation: shine5 1s reverse ease-out forwards;
+}
+
+@keyframes shine1{
+  0% {top: 50%;}
+  100% {top: 18%;}
+}
+@keyframes shine2 {
+  0% {left: 53%; top: 25%;}
+  100% {left: 51.5%; top: 50%;}
+}
+@keyframes shine3 {
+  0% {left: 47%; top: 25%;}
+  100% {left: 48.5%; top: 50%;}
+}
+@keyframes shine4 {
+  0% {left: 45.5%; top: 65%;}
+  100% {left: 48%; top: 85%;}
+}
+@keyframes shine5 {
+  0% {left: 54%; top: 65%;}
+  100% {left: 52%; top: 85%;}
 }

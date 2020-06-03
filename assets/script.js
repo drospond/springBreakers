@@ -78,10 +78,8 @@ $(document).ready(function () {
             .addClass("title is-4")
             .text(response.data[i].name);
           const hotelRating = $("<p>")
-            .addClass("subtitle is-4")
             .text("Hotel rating: " + response.data[i].rating);
           const hotelPrice = $("<p>")
-            .addClass("subtitle is-4")
             .text("Hotel price: " + response.data[i].price);
           const dealLink = $("<a>")
             .text("View Deal!")

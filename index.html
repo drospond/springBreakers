@@ -34,16 +34,18 @@
       <div class="navbar-brands">
         <strong><h1 class="brands">Spring Breakers</h1></strong>
       </div>
-      <div class="half-circle"></div>
+      <div class="animation-container">
+        <div class="sun"></div>
+        <div class="sun-beam beam1"></div>
+        <div class="sun-beam beam2"></div>
+        <div class="sun-beam beam3"></div>
+        <div class="sun-beam beam4"></div>
+        <div class="sun-beam beam5"></div>
+      </div>
     </nav>
 
     <div class="columns form-area">
-      <div class="column is-full-mobile">
-        <!-- <img
-          class="home-img"
-          src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/v1554924869/shape/mentalfloss/29007-istock-642987348_0.jpg?itok=MsXshrAK"
-        /> -->
-      </div>
+      <div class="column is-full-mobile"></div>
       <form class="is-tile box param-tile form">
         <h3>Easiest way to keep your fun time on budget</h3>
         <div class="field">
@@ -87,18 +89,18 @@
     </div>
 
     <div class="container" hidden id="results-container">
-      <div class="level">
-        <div class="level-item">
-          <p class="subtitle is-5">
-            <strong>RESULTS</strong>
-          </p>
-        </div>
-      </div>
-
       <br />
       <div class="columns">
-        <div class="column" id="hotel-results"></div>
-        <div class="column" id="restaurant-results"></div>
+        <div class="column">
+          <h3 class="column-title">Hotels</h3>
+          <hr />
+          <div id="hotel-results"></div>
+        </div>
+        <div class="column">
+          <h3 class="column-title">Restaurants</h3>
+          <hr />
+          <div id="restaurant-results"></div>
+        </div>
       </div>
     </div>
 
