@@ -91,6 +91,10 @@ form{
   padding-bottom: 30px;
 }
 
+.portfolio-link{
+  color: darkblue;
+}
+
 .column-title{
   text-align: center;
   font-size: 30px;
