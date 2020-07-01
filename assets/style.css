@@ -16,6 +16,7 @@ h4 {
   font-size: 50px;
   font-weight: bold;
   border-bottom: 5px solid gold;
+  animation: sky-change 1s ease-in forwards;
 }
 
 .navbar-brands {
@@ -127,6 +128,7 @@ form{
   right: 0;
   margin: auto;
   bottom: 0;
+  animation: sun-shine 1s reverse ease-out forwards;
 }
 
 .sun-beam {
@@ -142,7 +144,7 @@ form{
 .beam1{
   left: 50%;
   top: 50%;
-  animation: shine1 1s ease-out forwards;
+  animation: shine1 1s reverse ease-out forwards;
 }
 .beam2{
   left: 80%;
@@ -169,27 +171,30 @@ form{
   animation: shine5 1s reverse ease-out forwards;
 }
 
-.animation-container:hover .beam1{
-  animation: shine1 1s ease-out forwards;
+@keyframes sky-change{
+  from {background-color: rgb(2, 72, 95);}
+  to {background-color: lightblue;}
 }
-
+@keyframes sun-shine{
+  to {background-color: rgb(255, 94, 30);}
+}
 @keyframes shine1{
-  0% {top: 50%;}
-  100% {top: 15%;}
+  0% {top: 15%; }
+  100% {top: 50%; background-color: rgb(255, 94, 30);}
 }
 @keyframes shine2 {
   0% {left: 75%; top: 25%;}
-  100% {left: 70%; top: 50%;}
+  100% {left: 70%; top: 50%; background-color: rgb(255, 94, 30);}
 }
 @keyframes shine3 {
   0% {left: 25%; top: 25%;}
-  100% {left: 30%; top: 50%;}
+  100% {left: 30%; top: 50%; background-color: rgb(255, 94, 30);}
 }
 @keyframes shine4 {
   0% {left: 16%; top: 65%;}
-  100% {left: 26%; top: 85%;}
+  100% {left: 26%; top: 80%; background-color: rgb(255, 94, 30);}
 }
 @keyframes shine5 {
   0% {left: 78%; top: 65%;}
-  100% {left: 68%; top: 85%;}
+  100% {left: 68%; top: 80%; background-color: rgb(255, 94, 30);}
 }

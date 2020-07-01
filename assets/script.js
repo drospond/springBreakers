@@ -190,6 +190,7 @@ $(document).ready(function () {
 
   function search(event) {
     event.preventDefault();
+    triggerSun();
     var departDate = $("#start-date").val();
     var returnDate = $("#end-date");
     var destinationInput = $("#destination").val();
@@ -208,10 +209,12 @@ $(document).ready(function () {
 
   $("#search").on("click", search);
 
-  $(".navbar-brands").on("click", function () {
+  function triggerSun() {
     $('.animation-container').empty();
     $('.animation-container').append(
       '<div class="sun"></div><div class="sun-beam beam1"></div><div class="sun-beam beam2"></div><div class="sun-beam beam3"></div><div class="sun-beam beam4"></div><div class="sun-beam beam5"></div>'
     );
-  });
+  }
+
+  $(".navbar-brands").on("click", triggerSun);
 });
