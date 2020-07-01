@@ -77,10 +77,12 @@ $(document).ready(function () {
           const hotelName = $("<p>")
             .addClass("title is-4")
             .text(response.data[i].name);
-          const hotelRating = $("<p>")
-            .text("Hotel rating: " + response.data[i].rating);
-          const hotelPrice = $("<p>")
-            .text("Hotel price: " + response.data[i].price);
+          const hotelRating = $("<p>").text(
+            "Hotel rating: " + response.data[i].rating
+          );
+          const hotelPrice = $("<p>").text(
+            "Hotel price: " + response.data[i].price
+          );
           const dealLink = $("<a>")
             .text("View Deal!")
             .attr("href", response.data[i].hac_offers.offers[0].link);
@@ -205,4 +207,11 @@ $(document).ready(function () {
   }
 
   $("#search").on("click", search);
+
+  $(".navbar-brands").on("click", function () {
+    $('.animation-container').empty();
+    $('.animation-container').append(
+      '<div class="sun"></div><div class="sun-beam beam1"></div><div class="sun-beam beam2"></div><div class="sun-beam beam3"></div><div class="sun-beam beam4"></div><div class="sun-beam beam5"></div>'
+    );
+  });
 });
