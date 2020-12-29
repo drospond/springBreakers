@@ -113,6 +113,26 @@ form{
   max-width: inherit;
 }
 
+.columns{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 540px) {
+  form{
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .brands{
+    z-index: 99999999;
+    text-align: center;
+    position: relative;
+  }
+}
+
 .animation-container{
   width: 200px;
   height: 74px;
