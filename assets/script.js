@@ -37,6 +37,9 @@ $(document).ready(function () {
       },
     };
     $.ajax(settingsTripAdvGetLocation_ID).then(function (response) {
+      if(response.data.length === 0){
+        return errorMessage.text("Could not find location");
+      };
       callback(
         maxBudgetInput,
         departDate,
@@ -126,6 +129,9 @@ $(document).ready(function () {
       method: "GET",
     };
     $.ajax(settingsZomatoGETLocations).then(function (response) {
+      if(response.location_suggestions.length === 0){
+        return;
+      }
       callback(response.location_suggestions[0].entity_id);
     });
   }
