@@ -70,7 +70,6 @@ $(document).ready(function () {
       },
     };
     $.ajax(settingsTripAdvHotel).then(function (response, err) {
-      console.log("Response: ", response);
       if(response.errors){
         errorMessage.text(response.errors[0].message)
       }
