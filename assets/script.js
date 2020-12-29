@@ -94,6 +94,7 @@ $(document).ready(function () {
           );
           const dealLink = $("<a>")
             .text("View Deal!")
+            .attr("target", "_blank")
             .attr("href", response.data[i].hac_offers.offers[0].link);
 
           hotelCard.append(cardImage).append(cardContent);
@@ -172,6 +173,7 @@ $(document).ready(function () {
           const mediaContent = $("<div>").addClass("media-content");
           const restaurantName = $("<a>")
             .attr("href", response.best_rated_restaurant[i].restaurant.url)
+            .attr("target", "_blank")
             .append(
               `<p class="title is-4">${response.best_rated_restaurant[i].restaurant.name}</p>`
             );
@@ -184,6 +186,7 @@ $(document).ready(function () {
           );
           const menuLink = $("<a>")
             .text("Menu")
+            .attr("target", "_blank")
             .attr(
               "href",
               response.best_rated_restaurant[i].restaurant.menu_url
