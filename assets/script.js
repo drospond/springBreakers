@@ -158,11 +158,15 @@ $(document).ready(function () {
           const restaurantCard = $("<div>").addClass("card");
           const cardImage = $("<div>").addClass("card-image");
           const figure = $("<figure>").addClass("image is-4by3");
+          let restaurantImageSrc = response.best_rated_restaurant[i].restaurant.featured_image;
+          if(!restaurantImageSrc){
+            restaurantImageSrc = "./assets/images/image-not-found.svg"
+          }
           const restaurantImage = $("<img>")
             .attr("alt", "Restaurant")
             .attr(
               "src",
-              response.best_rated_restaurant[i].restaurant.featured_image
+              restaurantImageSrc
             );
           const cardContent = $("<div>").addClass("card-content");
           const mediaContent = $("<div>").addClass("media-content");
