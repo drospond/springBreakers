@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
   // API keys
   var zomatoKey = "9f4de5189fa76ba5e2e854c84b47b2e3";
@@ -64,6 +66,7 @@ $(document).ready(function () {
       },
     };
     $.ajax(settingsTripAdvHotel).then(function (response) {
+      console.log(response.data);
       for (var i = 0; i < 5; i++) {
         if (response.data[i].rating < 5) {
           const hotelCard = $("<div>").addClass("card");
@@ -114,7 +117,7 @@ $(document).ready(function () {
       crossDomain: true,
       url: zomatoURL,
       beforeSend: function (xhr) {
-        xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3");
+        xhr.setRequestHeader("user-key", zomatoKey);
       },
       method: "GET",
     };
@@ -135,7 +138,7 @@ $(document).ready(function () {
       crossDomain: true,
       url: zomatoURL,
       beforeSend: function (xhr) {
-        xhr.setRequestHeader("user-key", "9f4de5189fa76ba5e2e854c84b47b2e3");
+        xhr.setRequestHeader("user-key", zomatoKey);
       },
       method: "GET",
     };
