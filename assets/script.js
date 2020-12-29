@@ -5,6 +5,8 @@ $(document).ready(function () {
   var zomatoKey = "9f4de5189fa76ba5e2e854c84b47b2e3";
   var tripAdvAPIKey = "6d1747e19cmshe3ce0496d913f19p141f76jsn0977925b3e6b";
 
+  const errorMessage = $("#error-message");
+
   function showResults() {
     $("#results-container").removeAttr("hidden");
     $([document.documentElement, document.body]).animate(
@@ -22,7 +24,6 @@ $(document).ready(function () {
     departDate,
     callback
   ) {
-    console.log(destinationInput);
     var settingsTripAdvGetLocation_ID = {
       async: true,
       crossDomain: true,
@@ -65,8 +66,11 @@ $(document).ready(function () {
         "x-rapidapi-key": tripAdvAPIKey,
       },
     };
-    $.ajax(settingsTripAdvHotel).then(function (response) {
-      console.log(response.data);
+    $.ajax(settingsTripAdvHotel).then(function (response, err) {
+      console.log("Response: ", response);
+      if(response.errors){
+        errorMessage.text(response.errors[0].message)
+      }
       for (var i = 0; i < 5; i++) {
         if (response.data[i].rating < 5) {
           const hotelCard = $("<div>").addClass("card");
@@ -208,6 +212,7 @@ $(document).ready(function () {
       getHotelInfo
     );
     getLocationInfoZomato(destinationInput, getRestaurantInfo);
+    errorMessage.text("");
   }
 
   $("#search").on("click", search);
